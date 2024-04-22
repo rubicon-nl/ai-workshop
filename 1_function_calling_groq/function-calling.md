@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
 
 ## Voorbereiding
 1. Installeer Conda [(download hier)](https://docs.anaconda.com/free/miniconda/)
-  a. **Belangrijk:** kies tijdens installatie voor toevoegen aan PATH!!
+   * **Belangrijk:** kies tijdens installatie voor toevoegen aan PATH!!
 2. Maak een folder aan waar je in gaat werken
 3. Ga naar [Groq Cloud](https://console.groq.com/login), maak hier een account of log in met Github/Google
 4. Maak een API key aan en bewaar deze even, je hebt hem straks nodig!
