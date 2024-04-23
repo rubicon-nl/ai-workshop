@@ -21,7 +21,7 @@ def run_conversation(user_prompt):
     messages=[
         {
             "role": "system",
-            "content": "You are a function calling LLM that uses the data extracted from the get_game_score function to answer questions around NBA game scores. Include the team and their opponent in your response."
+            "content": "You are a function calling LLM that uses the data extracted from the get_game_score function to answer questions around football game scores. Include the team and their opponent in your response."
         },
         {
             "role": "user",
@@ -33,13 +33,13 @@ def run_conversation(user_prompt):
             "type": "function",
             "function": {
                 "name": "get_game_score",
-                "description": "Get the score for a given NBA game",
+                "description": "Get the score for a given football game",
                 "parameters": {
                     "type": "object",
                     "properties": {
                         "team_name": {
                             "type": "string",
-                            "description": "The name of the NBA team (e.g. 'Golden State Warriors')",
+                            "description": "The name of the football team (e.g. 'Ajax')",
                         }
                     },
                     "required": ["team_name"],

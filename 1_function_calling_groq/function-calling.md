@@ -22,16 +22,16 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
     app = Flask(__name__)
 
     def get_game_score(team_name):
-        """Get the current score for a given NBA game"""
+        """Get the current score for a given football game"""
         team_name = team_name.lower()
-        if "warriors" in team_name:
-            return {"game_id": "401585601", "status": 'Final', "home_team": "Los Angeles Lakers", "home_team_score": 121, "away_team": "Golden State Warriors", "away_team_score": 128}
-        elif "lakers" in team_name:
-            return {"game_id": "401585601", "status": 'Final', "home_team": "Los Angeles Lakers", "home_team_score": 121, "away_team": "Golden State Warriors", "away_team_score": 128}
-        elif "nuggets" in team_name:
-            return {"game_id": "401585577", "status": 'Final', "home_team": "Miami Heat", "home_team_score": 88, "away_team": "Denver Nuggets", "away_team_score": 100}
-        elif "heat" in team_name:
-            return {"game_id": "401585577", "status": 'Final', "home_team": "Miami Heat", "home_team_score": 88, "away_team": "Denver Nuggets", "away_team_score": 100}
+        if "ajax" in team_name:
+            return {"game_id": "2342340", "status": 'final', "home_team": "Ajax", "home_team_score": 3, "away_team": "PSV", "away_team_score": 1}
+        elif "psv" in team_name:
+            return {"game_id": "2342342", "status": 'final', "home_team": "PSV", "home_team_score": 2, "away_team": "Feyenoord", "away_team_score": 2}
+        elif "feyenoord" in team_name:
+            return {"game_id": "2342343", "status": 'final', "home_team": "Feyenoord", "home_team_score": 1, "away_team": "Ajax", "away_team_score": 0}
+        elif "az" in team_name:
+            return {"game_id": "2342344", "status": 'final', "home_team": "AZ", "home_team_score": 2, "away_team": "PSV", "away_team_score": 1}
         else:
             return {"team_name": team_name, "score": "unknown"}
         
@@ -63,7 +63,7 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
     MODEL = 'llama3-70b-8192'
 
     def get_game_score(team_name):
-        """Get the current score for a given NBA game by querying the Flask API."""
+        """Get the current score for a given football game by querying the Flask API."""
         url = f'http://127.0.0.1:5000/score?team={team_name}'
         response = requests.get(url)
         if response.status_code == 200:
@@ -76,7 +76,7 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
         messages=[
             {
                 "role": "system",
-                "content": "You are a function calling LLM that uses the data extracted from the get_game_score function to answer questions around NBA game scores. Include the team and their opponent in your response."
+                "content": "You are a function calling LLM that uses the data extracted from the get_game_score function to answer questions around football game scores. Include the team and their opponent in your response."
             },
             {
                 "role": "user",
@@ -88,13 +88,13 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
                 "type": "function",
                 "function": {
                     "name": "get_game_score",
-                    "description": "Get the score for a given NBA game",
+                    "description": "Get the score for a given football game",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "team_name": {
                                 "type": "string",
-                                "description": "The name of the NBA team (e.g. 'Golden State Warriors')",
+                                "description": "The name of the football team (e.g. 'Ajax')",
                             }
                         },
                         "required": ["team_name"],
@@ -142,7 +142,7 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
             )  # get a new response from the model where it can see the function response
             return second_response.choices[0].message.content
         
-    user_prompt = "What was the score of the Warriors game?"
+    user_prompt = "What was the score of the Ajax game?"
     print(run_conversation(user_prompt))
    ```
    5. draai het script: `python app.py` en je zult het resultaat zien

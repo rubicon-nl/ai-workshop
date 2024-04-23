@@ -4,16 +4,16 @@ import json
 app = Flask(__name__)
 
 def get_game_score(team_name):
-    """Get the current score for a given NBA game"""
+    """Get the current score for a given football game"""
     team_name = team_name.lower()
-    if "warriors" in team_name:
-        return {"game_id": "401585601", "status": 'Final', "home_team": "Los Angeles Lakers", "home_team_score": 121, "away_team": "Golden State Warriors", "away_team_score": 128}
-    elif "lakers" in team_name:
-        return {"game_id": "401585601", "status": 'Final', "home_team": "Los Angeles Lakers", "home_team_score": 121, "away_team": "Golden State Warriors", "away_team_score": 128}
-    elif "nuggets" in team_name:
-        return {"game_id": "401585577", "status": 'Final', "home_team": "Miami Heat", "home_team_score": 88, "away_team": "Denver Nuggets", "away_team_score": 100}
-    elif "heat" in team_name:
-        return {"game_id": "401585577", "status": 'Final', "home_team": "Miami Heat", "home_team_score": 88, "away_team": "Denver Nuggets", "away_team_score": 100}
+    if "ajax" in team_name:
+        return {"game_id": "2342340", "status": 'final', "home_team": "Ajax", "home_team_score": 3, "away_team": "PSV", "away_team_score": 1}
+    elif "psv" in team_name:
+        return {"game_id": "2342342", "status": 'final', "home_team": "PSV", "home_team_score": 2, "away_team": "Feyenoord", "away_team_score": 2}
+    elif "feyenoord" in team_name:
+        return {"game_id": "2342343", "status": 'final', "home_team": "Feyenoord", "home_team_score": 1, "away_team": "Ajax", "away_team_score": 0}
+    elif "az" in team_name:
+        return {"game_id": "2342344", "status": 'final', "home_team": "AZ", "home_team_score": 2, "away_team": "PSV", "away_team_score": 1}
     else:
         return {"team_name": team_name, "score": "unknown"}
     
