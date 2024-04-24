@@ -58,6 +58,7 @@ https://www.youtube.com/watch?v=7OAmeq-vwNc
     import os
     import json
     import requests
+    import gradio as gr
 
     client = Groq(api_key = os.getenv('GROQ_API_KEY'))
     MODEL = 'llama3-70b-8192'
